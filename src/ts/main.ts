@@ -3,19 +3,22 @@ const counters = document.querySelectorAll(
 ) as NodeListOf<HTMLDivElement>;
 
 counters.forEach((counter) => {
-  counter.innerText = '0';
+  const element = counter;
+
+  element.innerText = '0';
 
   const updateCounter = () => {
-    const target = +counter.getAttribute('data-target')!;
-    const c = +counter.innerText;
+    const attr = element.getAttribute('data-target');
+    const target = +attr!;
+    const c = +element.innerText;
 
     const increment = target / 200;
 
     if (c < target) {
-      counter.innerText = `${Math.ceil(c + increment)}`;
+      element.innerText = `${Math.ceil(c + increment)}`;
       setTimeout(updateCounter, 1);
     } else {
-      counter.innerText = target.toString();
+      element.innerText = target.toString();
     }
   };
 

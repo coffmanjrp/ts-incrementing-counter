@@ -1,17 +1,19 @@
 "use strict";
 var counters = document.querySelectorAll('.counter');
 counters.forEach(function (counter) {
-    counter.innerText = '0';
+    var element = counter;
+    element.innerText = '0';
     var updateCounter = function () {
-        var target = +counter.getAttribute('data-target');
-        var c = +counter.innerText;
+        var attr = element.getAttribute('data-target');
+        var target = +attr;
+        var c = +element.innerText;
         var increment = target / 200;
         if (c < target) {
-            counter.innerText = "" + Math.ceil(c + increment);
+            element.innerText = "".concat(Math.ceil(c + increment));
             setTimeout(updateCounter, 1);
         }
         else {
-            counter.innerText = target.toString();
+            element.innerText = target.toString();
         }
     };
     updateCounter();
